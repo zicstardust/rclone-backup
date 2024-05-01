@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 config_file=${script_dir}/rclone-backup.config
 source $config_file
@@ -6,10 +6,11 @@ source $config_file
 start(){
     echo "=============Start rclone backup===================="
 
-    if [ -z ${EXTRAS_ARGS[$i]} ];then
+    if [ -z "${EXTRAS_ARGS[$i]}" ];then
         FLAGS=""    
-    else    
-        FLAGS="-f ${EXTRAS_ARGS[$i]}" 
+    else
+        FLAGS="${EXTRAS_ARGS[$i]}"    
+        #FLAGS="-f ${EXTRAS_ARGS[$i]}" 
     fi  
    
     echo "---BACKUP FROM ${SOURCE_REMOTE[$i]}:${SOURCE_DIR[$i]} TO ${DESTINY_REMOTE[$i]}:${DESTINY_DIR[$i]}---"
