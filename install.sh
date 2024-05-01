@@ -29,6 +29,7 @@ OnCalendar=*-*-* *:00:00
 [Install]
 WantedBy=timers.target
 EOF
+systemctl --user daemon-reload
 
 curl https://raw.githubusercontent.com/zicstardust/rclone-backup/main/run.sh > ${HOME}/.config/systemd/rclone-backup.sh
 chmod +x ${HOME}/.config/systemd/rclone-backup.sh
