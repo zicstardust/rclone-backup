@@ -1,5 +1,4 @@
 #!/bin/sh
-
 mkdir -p ${HOME}/.config/systemd/user
 
 cat > ${HOME}/.config/systemd/user/rclone-backup.service << EOF
@@ -16,8 +15,6 @@ ExecStart=${HOME}/.config/systemd/rclone-backup.sh
 WantedBy=multi-user.target
 EOF
 
-
-
 cat > ${HOME}/.config/systemd/user/rclone-backup.timer << EOF
 [Unit]
 Description=Rclone Backup Timer
@@ -32,3 +29,6 @@ OnCalendar=*-*-* *:00:00
 [Install]
 WantedBy=timers.target
 EOF
+
+curl https://raw.githubusercontent.com/zicstardust/rclone-backup/main/run.sh > ${HOME}/.config/systemd/rclone-backup.sh
+chmod +x ${HOME}/.config/systemd/rclone-backup.sh
